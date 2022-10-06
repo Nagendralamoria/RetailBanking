@@ -1,0 +1,58 @@
+<app-header-work></app-header-work>
+<section class="mainbody">
+        <img routerLink="/employeedashboard"  src="../../../assets/images/11.png" style="width:2rem;  cursor:pointer;"/>
+
+    <h2 class="text-center bg-white p-2 text-primary mt-2 rounded">Customer Details</h2>
+    <div class=" text-primary mt-1 rounded  m-0" >
+    
+        <table class="table">
+            <thead>
+              <tr class="tablehead bg-white">
+                <th scope="col">  <h6 class="text-primary">CUSTOMER ID</h6></th>
+                <th scope="col"><h6 class="text-primary">CUSTOMER NAME</h6></th>
+                <th scope="col"> <h6 class="text-primary">DOB</h6></th>
+                <th scope="col">  <h6 class="text-primary">PAN</h6></th>
+                <th scope="col">  <h6 class="text-primary">ADDRESS</h6></th>
+                <th scope="col">  <h6 class="text-primary">ACCOUNT ID</h6></th>
+                <th scope="col">  <h6 class="text-primary">CURRENT BALANCE</h6></th>
+                <th scope="col">  <h6 class="text-primary">ACCOUNT TYPE</h6></th>
+                <th scope="col">  <h6 class="text-primary">OWNER NAME</h6></th>
+              </tr>
+            </thead>
+            <tbody class=" bg-white">
+              <tr>
+                <td>{{custDetails.userid}}</td>
+                <td>{{custDetails.username}}</td>
+                <td>{{custDetails.dateOfBirth}}</td>
+                <td>{{custDetails.pan}}</td>
+                <td>{{custDetails.address}}</td>
+                <td >
+                      <tr class="d-flex flex-columns justify-content-center" *ngFor="let account of custDetails.accounts">
+                          <td>{{account.accountId}}</td>      
+                      </tr>
+                 </td>
+              <td> 
+                <tr class="d-flex flex-columns justify-content-center" *ngFor="let account of custDetails.accounts">
+                    <td>{{account.currentBalance}}</td>
+                </tr>
+               </td>
+        <td>          
+          <tr class="d-flex flex-columns justify-content-center" *ngFor="let account of custDetails.accounts">
+              <td>{{account.accountType}}</td>
+          </tr>
+        </td>
+  <td>
+                
+                      
+    <tr class="d-flex flex-columns justify-content-center" *ngFor="let account of custDetails.accounts">
+       
+        <td>{{account.ownerName}}</td> 
+    </tr>
+
+</td>
+            </tbody>
+          </table>
+
+  
+    </div>
+</section>

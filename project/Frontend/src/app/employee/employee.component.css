@@ -1,0 +1,23 @@
+a.disabled {
+    pointer-events: none;
+    cursor: not-allowed; 
+ }
+
+ label{
+     margin: 10px;
+ }
+
+ .message{
+    color: orange;
+    margin-left: 10px;
+ }
+ .dashboard{
+    background-image: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-92086.jpg?w=740&t=st=1662733215~exp=1662733815~hmac=47dc147157b1d9ccf61e697a6f1442bcdcd32ca7b5e5584d5364dad6c070aad7") ;
+ }
+ .round{
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ }
+ .round1{
+    border-radius:0rem 0rem 1rem 1rem ;
+ }

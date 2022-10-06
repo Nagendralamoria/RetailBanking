@@ -1,0 +1,67 @@
+<app-header-work></app-header-work>
+<section class="custformmain d-flex justify-content-center align-items-center flex-column">
+    <div class="d-flex w-100 pl-4 " style="margin-top:-5rem">
+        <img routerLink="/employeedashboard"  src="../../../assets/images/11.png" style="width:2rem;  cursor:pointer;"/>
+    </div>
+    <h2 class="bg-white p-2 mt-4 m-0 w-50  text-center" style="border-radius:0.5rem;">Create Customer Account</h2>
+    
+        <div class="p-2 m-0 w-50 mt-2 rounded text-center bg-success text-white" style="border-radius:0.5rem;"  *ngIf="createmsg" style="text-align: center;">
+            <p><b>{{createmsg}}</b></p>
+        </div>
+        <div class="p-2  m-0 w-50 mt-2  rounded text-center bg-danger text-white" style="border-radius:0.5rem;" *ngIf="errormsg" style="text-align: center;">
+            <p><b>{{errormsg}}</b></p>
+        </div>
+    
+    <div class="container m-0 mt-2 w-50 p-4 " id="login-box" style="border-radius:0.5rem ;">
+        <div class="container justify-content-center  align-items-center">
+            
+            <form #f="ngForm">
+                <div class="d-flex flex-column">
+                    <div class="d-flex mb-2 align-items-center justify-content-between">
+                        <h6>Enter Customer ID</h6>
+                        
+                            <input type="text" name="customerId" autocomplete="off" required="required" [value]="id"
+                           readonly
+                            class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Opening account</h6>
+                        
+                        <input type="text" name="Amount" placeholder="Amount" autocomplete="off" required="required" ngModel
+                #Amount="ngModel"  class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Account Type</h6>
+                        
+                        <select class="w-50 form-control" type="text" path="accountType" placeholder="Account Type" name="accountType"
+                          [ngModel]="accountType" #accountType="ngModel" autocomplete="off">
+                          <option>Savings</option>
+                          <option>Current</option>
+                        </select>
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Opening Date</h6>
+                        
+                        <input type="date" id="date" path="dateOfBirth" name="dob" placeholder="Date of Birth" ngModel
+                        #dob="ngModel" required="required"  class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Owner Name</h6>
+                        
+                        <input type="text" path="owername" name="ownername" placeholder="Owner Name" autocomplete="off" ngModel
+                        #owername="ngModel" maxlength="10" required="required"  class="form-control w-50">
+                        
+                    </div>
+                  
+                
+            </div>
+            <button  class="btn btn-success w-100 mt-2" value="Create"
+            (click)="createAccount(f)">Create</button>
+        </form>
+    </div>
+    </div>
+</section>

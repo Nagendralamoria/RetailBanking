@@ -1,0 +1,163 @@
+<app-header-cust></app-header-cust>
+<div class="customermainbody">
+  <h1 class="text-white pt-2 text-center">Welcome to Origin Bank</h1>
+  <div class="bg-white p-2 m-4 rounded mt-4">
+    <h3 class="p-2 text-primary">Customer Details</h3>
+   
+      <table cellpadding="5" class="table mt-2  table-striped text-center">
+        <tr class="tablehead bg-white text-center ">
+          <th scope="col">  <h6 class="text-primary">CUSTOMER ID</h6></th>
+          <th scope="col"><h6 class="text-primary">CUSTOMER NAME</h6></th>
+          <th scope="col"> <h6 class="text-primary">DOB</h6></th>
+          <th scope="col">  <h6 class="text-primary">PAN</h6></th>
+          <th scope="col">  <h6 class="text-primary">ADDRESS</h6></th>
+          <th scope="col">  <h6 class="text-primary">ACCOUNT ID</h6></th>
+          <th scope="col">  <h6 class="text-primary">CURRENT BALANCE</h6></th>
+          <th scope="col">  <h6 class="text-primary">ACCOUNT TYPE</h6></th>
+          <th scope="col">  <h6 class="text-primary">OWNER NAME</h6></th>
+        </tr>
+        <tr>
+          <td>{{customerValue.userid}}</td>
+          <td>{{customerValue.username}}</td>
+          <td>{{customerValue.dateOfBirth}}</td>
+          <td>{{customerValue.pan}}</td>
+          <td>{{customerValue.address}}</td>
+     
+           
+          <td >
+            <tr class="d-flex flex-columns justify-content-center" *ngFor="let account of customerValue.accounts">
+                <td>{{account.accountId}}</td>      
+            </tr>
+       </td>
+    <td> 
+      <tr class="d-flex flex-columns justify-content-center" *ngFor="let account of customerValue.accounts">
+          <td>{{account.currentBalance}}</td>
+      </tr>
+     </td>
+<td>          
+<tr class="d-flex flex-columns justify-content-center" *ngFor="let account of customerValue.accounts">
+    <td>{{account.accountType}}</td>
+</tr>
+</td>
+<td>
+      
+            
+<tr class="d-flex flex-columns justify-content-center" *ngFor="let account of customerValue.accounts">
+
+<td>{{account.ownerName}}</td> 
+</tr>
+
+</td>
+             
+          
+          
+    
+        </tr>
+      </table>
+  
+  </div>
+  <div class="bg-white p-2 ml-4 mr-4 mt-4 rounded ">
+   <div class="d-flex justify-content-between">
+    <h3 class="text-primary">Transaction Details</h3>
+    <form class="d-flex align-item-center"> 
+     
+        <select name="accId" [ngModel]="accId" (ngModelChange)="onSelectedChange($event)" class="select mr-2 " style="width:10rem ;">
+          <option *ngFor="let account of customerValue.accounts">{{account.accountId}}
+          </option>
+        </select>
+        <button class="btn btn-primary" type="button" (click)="onDisplay()" > Submit </button>
+     
+    </form>
+   </div>
+  </div>
+
+
+  <div class="bg-white p-2 ml-4 mr-4  rounded " *ngIf="display">
+    <table class="table table-striped">
+      <tr class="text-primary">
+        <th>sourceAccountId</th>
+        <th>sourceOwnerName</th>
+        <th>targetAccountId</th>
+        <th>targetOwnerName</th>
+        <th>amount</th>
+        <th>initiationDate</th>
+        <th>reference</th>
+      </tr>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{transaction.sourceAccountId}}</td>
+        <td>{{transaction.sourceOwnerName}}</td>
+        <td>{{transaction.targetAccountId}}</td>
+        <td>{{transaction.targetOwnerName}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.initiationDate}}</td>
+        <td>{{transaction.reference}}</td>
+      </tr>
+    </table>
+  </div>
+ <div class="d-flex">
+  <div class="card d-flex flex-column align-items-center col m-4  p-0 border-0 round" >
+    <img class="card-img-top p-2" src="../../assets/images/9.jpg" alt="Card image cap" style="width:250px;cursor: pointer;">
+  
+    <div class="d-flex flex-column w-100">
+    <form #details="ngForm" class="d-flex p-2 ">
+   
+      <select  id="aId" name="aId" [ngModel]="aId" #acctId="ngModel" placeholder="Account No" class=" border-primary w-50 mr-2">
+        <option *ngFor="let account of customerValue.accounts"> {{account.accountId}} </option>
+      </select>
+     
+      <!-- <label>Enter the Amount to Withdraw:</label> -->
+      <input type="number" name="amount" placeholder="Enter the amount" class="mr-2  border-primary" ngModel #amount="ngModel" />
+      <input type="hidden" name="reference" value="withdraw" />
+       <button type="submit" name="View" class="btn btn-primary" (click)="onWithdraw(details)">Withdraw</button>
+    
+    </form>
+   
+  </div>
+  <div *ngIf="withdrawmsg">
+    <p class="text-danger" id="message">{{withdrawmsg}}</p>
+  </div>
+    <div class="card-body bg-primary w-100 mt-2  text-white d-flex justify-content-center round1 align-items-center ">
+      <h4 class="card-text" >Withdraw Money</h4>
+    </div>
+  </div>
+
+
+
+  <div class="card d-flex flex-column align-items-center col m-4  p-0 border-0 round" >
+    <img class="card-img-top p-2" src="../../assets/images/10.png" alt="Card image cap" style="width:250px;cursor: pointer;">
+    
+      
+        <form #value="ngForm" class="d-flex flex-column w-100">
+          <div class="d-flex p-2 md-2 justify-content-between">
+            <!-- <label>From Account: </label> -->
+          <select class="w-50 border-primary mr-2" id="accountid" name="accountid" [ngModel]="accountid" #accountid="ngModel">
+            <option *ngFor="let account of customerValue.accounts"> {{account.accountId}} </option>
+          </select>
+         
+          <!-- <label>ReceiversTarget Account No: </label> -->
+          <input class="w-50 border-primary" type="number" name="targetAccount" placeholder="ReceiversTarget Account No:" ngModel
+            #targetAccount="ngModel" />
+
+         
+          </div>
+          <!-- <label>Enter the Amount to Transfer: </label> -->
+         <div class="w-100 d-flex justify-content-between p-2">
+          <input type="number "  class="border-primary w-100 mr-2 m-0" name="amount" placeholder="Enter the amount"  ngModel #amount="ngModel" />
+          <input type="hidden" name="reference" value="transfer" />
+          <button type="button " (click)="onTransfer(value)" name="View" class="btn btn-primary"
+            [disabled]="!value.valid">Transfer</button>
+      
+         </div>
+        </form>
+        <div *ngIf="transfermsg">
+          <p class="text-danger" id="message">{{transfermsg}}</p>
+        </div>
+   
+    <div class="card-body bg-primary w-100 mt-2  text-white d-flex justify-content-center round1 align-items-center ">
+      <h4 class="card-text" >Transfer  Money</h4>
+    </div>
+ 
+ </div>
+ 
+</div>
+

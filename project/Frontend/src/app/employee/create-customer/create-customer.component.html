@@ -1,0 +1,68 @@
+<app-header-work></app-header-work>
+<section class="custformmain d-flex justify-content-center align-items-center flex-column">
+    <div class="d-flex w-100 pl-4 " style="margin-top:-3rem">
+        <img routerLink="/employeedashboard"  src="../../../assets/images/11.png" style="width:2rem;  cursor:pointer;"/>
+    </div>
+    <h2 class="bg-white p-2 mt-4 m-0 w-50  text-center" style="border-radius:0.5rem;">Create Customer</h2>
+    
+        <div class="p-2 m-0 w-50 mt-2 rounded text-center bg-success text-white" style="border-radius:0.5rem;"  *ngIf="createmsg" style="text-align: center;">
+            <p><b>{{createmsg}}</b></p>
+        </div>
+        <div class="p-2  m-0 w-50 mt-2  rounded text-center bg-danger text-white" style="border-radius:0.5rem;" *ngIf="errormsg" style="text-align: center;">
+            <p><b>{{errormsg}}</b></p>
+        </div>
+    
+    <div class="container m-0 mt-2 w-50 p-4 " id="login-box" style="border-radius:0.5rem ;">
+        <div class="container justify-content-center  align-items-center">
+            
+            <form #create="ngForm">
+                <div class="d-flex flex-column">
+                    <div class="d-flex mb-2 align-items-center justify-content-between">
+                        <h6>Enter Customer ID</h6>
+                        
+                            <input type="text" name="Id" placeholder="Enter Id" autocomplete="off" required="required" ngModel #Id="ngModel" 
+                            class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Enter Username</h6>
+                        
+                        <input type="text" name="username" placeholder="Username" autocomplete="off" required="required"  ngModel #username="ngModel"
+                            class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Enter Password</h6>
+                        
+                        <input type="password" path="password" name="password" placeholder="Password" ngModel #password="ngModel"
+                        required="required" class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Enter Date Of Birth</h6>
+                        
+                        <input type="date" id="date" path="dateOfBirth" name="dob" placeholder="Date of Birth" ngModel #dob="ngModel"
+                        required="required" class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Enter PAN Number</h6>
+                        
+                        <input type="text" path="pan" name="pan" placeholder="Pan Number" autocomplete="off" ngModel #pan="ngModel"
+                        maxlength="10" required="required"  class="form-control w-50">
+                        
+                    </div>
+                    <div class="d-flex  mb-2 align-items-center justify-content-between">
+                        <h6>Enter Present Address</h6>
+                        
+                        <input type="text" path="address" name="address" placeholder="address" autocomplete="off" ngModel #address="ngModel"
+                        required="required"  class="form-control w-50">
+                        
+                    </div>
+                
+            </div>
+            <button type="submit" name="signup_submit" class="btn btn-success w-100 mt-2" (click)="onSubmit(create)">Create</button>
+        </form>
+    </div>
+    </div>
+</section>

@@ -1,0 +1,44 @@
+<main class="d-flex align-items-center justify-content-center vh-100 py-3 py-md-0 loginbg">
+  <div class="logincard ">
+    <div class="p-4"> 
+    <h3>Log In</h3>
+    <h1 class="text-center pb-3 pt-2">{{role}}</h1>
+    <div class="alert alert-danger" *ngIf="error" style="text-align: center;">
+      {{errorMessage}}
+    </div>
+    <form (submit)="onSubmit(login)" #login="ngForm">
+        <div class="form-group">
+       
+          <input type="text" path="userid" name="Id" id="Id" class="form-control" ngModel #userid="ngModel"
+            placeholder="User Id" autocomplete="off" />
+        </div>
+        <div class="form-group mb-2">
+        
+         
+          <input type="password" path="password" name="password" id="password" class="form-control"
+          placeholder="Password" ngModel #password="ngModel" />
+      </div>
+      <input type="hidden" path="role" name="role" id="role" />
+      <br>
+      <div style="text-align: center;">
+        <button name="login" id="login" class="btn btn-info btn-lg form-control" type="submit"
+          style="background-color: white; color:#407BFF; border-radius: 1rem; font-weight: bolder;"> Login </button>
+      </div>
+      <br>
+      <div style="text-align:center;cursor: pointer;" *ngIf="customer" >
+        
+          <h5 routerLink="/loginEmployee">Login as Employee</h5>
+      </div>
+      <div style="text-align:center;cursor: pointer;" *ngIf="employee">
+       
+          <h5 routerLink="/loginCustomer">Login as Customer </h5>
+        </div>
+    </form>
+  </div>
+    <div style="text-align:center ;border-radius: 0rem 0rem 1rem 1rem; background-color:white;color:#407BFF;" class="p-2">
+      <h2>Origin Bank</h2>
+    </div>
+  </div>
+
+  
+</main>

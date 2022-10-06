@@ -1,0 +1,20 @@
+.imgbox>img{
+    width: 35rem;
+}
+.text1{
+    font-size: 6rem;
+    color: #1B61FF;
+    padding-right: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.text2{
+    font-size: 3rem;
+    color: #1B61FF;
+    padding-right: 1rem;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+.footbox{
+    color: white;
+    background-color: #1B61FF;
+    border-radius: 1rem;
+}
